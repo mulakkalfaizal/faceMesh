@@ -8,6 +8,7 @@ mpFaceMesh = mp.solutions.face_mesh
 faceMesh = mpFaceMesh.FaceMesh()
 
 mpDraw = mp.solutions.drawing_utils
+drawSpec = mpDraw.DrawingSpec(thickness=1, circle_radius=2)
 
 pTime = 0
 cTime = 0
@@ -21,8 +22,7 @@ while True:
     #print(dir(results))
     if results.multi_face_landmarks:
         for faceLms in results.multi_face_landmarks:
-            mpDraw.draw_landmarks(img, faceLms, mpFaceMesh.FACEMESH_CONTOURS)
-
+            mpDraw.draw_landmarks(img, faceLms, mpFaceMesh.FACEMESH_CONTOURS, drawSpec, drawSpec)
 
     cTime = time.time()
     fps = 1 / (cTime - pTime)
